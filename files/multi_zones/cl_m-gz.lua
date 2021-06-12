@@ -10,8 +10,8 @@ local isInCityZone = false -- turns isInCityZone to false
 Greenzones = { -- Add your greenzones here. Do not forget the comma!
     ["Mission Row"] = { Coords = vector3(440.35321044922,-983.61755371094,30.689605712891), Radius = 50.0 },
     ["Legion"] = { Coords = vector3(170.51364135742,-1021.3690795898,28.816247940063), Radius = 50.0 }
---    ["snelweg"] = { Coords = vector3(1777.2489013672,1835.8293457031,79.736801147461), Radius = 50.0 }
-  }
+    ["Pillbox"] = { Coords = vector3(339.005, -586.7034, 43.43391), Radius = 100.0 }
+}
 
 
 
@@ -62,7 +62,7 @@ function EnteredGreenzone()
 --        multiline = true,
 --        args = {"Server", "You just entered the redzone"}})
     PlaySound(-1, "CHARACTER_CHANGE_CHARACTER_01_MASTER", 0, 0, 0, 0) 
-       
+    
     isLeaveMessagePresent = true 
     Citizen.SetTimeout(leaveMessage, function() -- Wait the timer to be done
         isLeaveMessagePresent = false

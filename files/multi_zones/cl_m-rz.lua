@@ -1,5 +1,5 @@
 
-local isMeldingVerstuurd = false -- Puts isMeldingVerstuurd to false
+local isMessage Sent = false -- Puts isMessageSent to false
 local leaveMessage = 5000 -- Amount of miliseconds to show the "You just left the redzone", you can change this to your liking
 local isLeaveMessagePresent = false -- The "You just left the redzone"
 
@@ -19,7 +19,7 @@ Citizen.CreateThread(function()
             DrawMarker(28, zoneData.Coords.x, zoneData.Coords.y, zoneData.Coords.z, 0.0, 0.0, 0.0, 0.0, 180.0, 0.0, --[[scalex]]zoneData.Radius, --[[scaley]]zoneData.Radius, --[[scalez]]zoneData.Radius, 255, 0, 0, 40, false, true, 2, nil, nil, false)
             if Vdist(zoneData.Coords, ped) < zoneData.Radius then
                 DrawTextOnScreen("YOU ARE IN A REDZONE", 0.77, 0.95, 255, 0, 0, 200, 0.8, 7)
-                if isMeldingVerstuurd == false then -- The moment you enter the circle (coords), it will check if isMeldingVerstuurd is false, if so it will set it to true. (If it remains false it will continue to run it)
+                if isMeldingVerstuurd == false then -- The moment you enter the circle (coords), it will check if isMessageSent is false, if so it will set it to true. (If it remains false it will continue to run it)
                     Wait(0) 
                     isMeldingVerstuurd = true 
                     EnteredRedzone()   -- runs line 33            
