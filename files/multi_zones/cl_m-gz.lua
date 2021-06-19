@@ -1,5 +1,5 @@
 
-local isMeldingVerstuurd = false -- puts isMeldingVerstuurd to false
+local isMessageSent = false -- puts isMessageSent to false
 local leaveMessage = 5000 -- Amount of miliseconds to show the "You just left the greenzone", feel free to change this to your liking!
 local isLeaveMessagePresent = false -- The "You just left the redzone"
 local speedInGZ = 13.0 -- The speed when you are in a greenzone
@@ -34,19 +34,19 @@ Citizen.CreateThread(function()
                 if isLeaveMessagePresent then
                     DrawTextOnScreen("YOU ARE IN A GREENZONE", 0.74, 0.95, 0, 255, 0, 200, 0.8, 7)
                 end
-                if isMeldingVerstuurd == false then -- The moment you enter the circle (coords), it will check if isMeldingVerstuurd is false, if so it will set it to true. (If it remains false it will continue to run it)
+                if isMessageSent == false then -- The moment you enter the circle (coords), it will check if isMessageSent is false, if so it will set it to true. (If it remains false it will continue to run it)
                     Wait(0)
-                    isMeldingVerstuurd = true 
+                    isMessageSent = true 
                     EnteredGreenzone()   -- runs line 33               
                 end                 
             elseif Vdist(zoneData.Coords, ped) < (zoneData.Radius + 30) and Vdist(zoneData.Coords, ped) > zoneData.Radius then
                 if isLeaveMessagePresent then
                     DrawTextOnScreen("YOU LEFT THE GREENZONE", 0.73, 0.95, 0, 255, 0, 200, 0.8, 7)
                 end
-                if isMeldingVerstuurd then
+                if isMessageSent then
                     LeftGreenzone() -- runs line 43
                 end
-                isMeldingVerstuurd = false
+                isMessageSent = false
             end
 
         end
@@ -107,9 +107,9 @@ end
 
 Citizen.CreateThread(function()
     for zoneTitel, zoneData in pairs(Greenzones) do
-      local RedzoneBlip = AddBlipForRadius(zoneData.Coords, zoneData.Radius)
-      SetBlipColour(RedzoneBlip, 69) 
-      SetBlipAlpha(RedzoneBlip, 100)
+        local RedzoneBlip = AddBlipForRadius(zoneData.Coords, zoneData.Radius)
+        SetBlipColour(RedzoneBlip, 69) 
+        SetBlipAlpha(RedzoneBlip, 100)
     end
 end)
 

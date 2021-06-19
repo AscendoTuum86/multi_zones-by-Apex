@@ -7,7 +7,7 @@ local isLeaveMessagePresent = false -- The "You just left the redzone"
 Redzones = { -- Add more zones in here. Do not forget the comma!
     ["Cannibal Camp"] = { Coords = vector3(-1118.1202392578,4927.525390625,218.392578125), Radius = 100.0 },
     ["Paleto Site"] = { Coords = vector3(1483.1395263672,6314.4790039062,29.157987594604), Radius = 100.0 }
-  }
+}
 
 
 
@@ -64,13 +64,13 @@ end
 
 Citizen.CreateThread(function() -- Adds the blips
     for zoneTitel, zoneData in pairs(Redzones) do
-      local RedzoneBlip = AddBlipForRadius(zoneData.Coords, zoneData.Radius)
-      SetBlipColour(RedzoneBlip, 1)
-      SetBlipAlpha(RedzoneBlip, 100)
+        local RedzoneBlip = AddBlipForRadius(zoneData.Coords, zoneData.Radius)
+        SetBlipColour(RedzoneBlip, 1)
+        SetBlipAlpha(RedzoneBlip, 100)
     end
-  end)
+end)
 
-  function DrawTextOnScreen(text, x, y, r, g, b, a, s, font)
+function DrawTextOnScreen(text, x, y, r, g, b, a, s, font)
     SetTextColour(r, g, b, a)   -- Color
     SetTextFont(font)                      -- Font
     SetTextScale(s, s)              -- Scale
